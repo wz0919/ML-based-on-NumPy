@@ -18,8 +18,7 @@ def train_svm_smo(X, Y, c, kernel, max_iter, *para):
     - *para； parameters may be used to calculate kernel matrix.
       
     Output:
-    - alpha: the optimal alpha for the dual problem
-    - b: the optimal bias for the primal problem
+    - state: a dictionary contains results and caches
     '''
     # initialize parameters
     state = {}
