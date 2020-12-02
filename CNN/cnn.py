@@ -5,7 +5,7 @@ class Block():
     Basic block for cnn.
     
     Architecture:
-    conv - relu - bn - max pool
+    conv - bn - relu - max pool
     '''
     def __init__(self, in_channels, out_channels):
         self.conv = Conv2d(in_channels, out_channels, 3, 1, 1)
@@ -43,7 +43,7 @@ class miniCNN():
     A miniCNN used to test the code.
     
     Architecture:
-    [conv - relu - bn - max pool ] * 3
+    [conv - bn - relu - max pool ] * 3
     affine - relu - affine - softmax
 
     expect input size: (N,3,32,32)
