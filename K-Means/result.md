@@ -1,4 +1,4 @@
-Both elbow method and kmeans method are based on the approaches finding new centroid in kmeans++
+Both elbow method and kmeans method are based on the approaches of finding new centroid in kmeans++
 
 elbow method result
 ---
@@ -16,4 +16,4 @@ Run kmeans for 9 times, result:
 
 We can see kmeans++ are fairly likely to have better clusters
 
-In this example even all the 9 times algorithm converged to the global optimal point
+In this example even in all the 9 times, the algorithm converged to the global optimal point
