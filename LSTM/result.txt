@@ -1,0 +1,37 @@
+iter 111200, loss: 0.046163
+----
+  the field of deep learning. Unlike standard feedforward neural networks, LSTM has feedback connections. It can not only process single data points (such as images), but also entire sequences of data  
+----
+iter 111300, loss: 0.045921
+----
+ g gradient problem that can be encountered when training traditional RNNs. Relative insensitivity to gap length is an advantage of LSTM over RNNs, hidden Markov models and other sequence learning meth 
+----
+iter 111400, loss: 0.045670
+----
+ (such as speech or video). For example, LSTM is applicable to tasks such as unsegmented, connected handwriting recognition,[2] speech recognition[3][4] and anomaly detection in network traffic or IDSs 
+----
+iter 111500, loss: 0.045450
+----
+ ods in numerous applications.[citation needed]
+
+The advantage of an LSTM cell compared to a common recurrent unit is its cell memory unit. The cell vertersis detadess nn inler dotark detation in neeww 
+----
+iter 111600, loss: 0.045226
+----
+  (intrusion detection systems).
+
+A common LSTM unit is composed of a cell, an input gate, an output gate and a forget gate. The cell remembers values over arbitrary time intervals and the three gates  
+----
+iter 111700, loss: 0.044954
+----
+ forgetting part of its previously stored memory, an we lations. LSTM has feeddarkcang and ration ss te he set manid on deacl on theres ngalle at at ithit is as insecwit on tas es ingad of to eecapsula 
+----
+iter 111800, loss: 0.044745
+----
+ regulate the flow of information into and out of to a lopentont aad wat so eecw siuninsd ted har lenution. Rs cell memethe sinpl arctire in network ar the cell memory unit aps outs, an artine imaty (s 
+----
+iter 111900, loss: 0.044573
+----
+ ong short-term memory (LSTM) is an artifichar RNN). Relatived cemebsens suara lgate and a forget gate. The cell remembers values over arbitrary time intervals and the three gates regulate the flow of  
+----
+iter 112000, loss: 0.044381
