@@ -1,9 +1,5 @@
 import numpy as np
 import matplotlib.pyplot as plt
-from mpl_toolkits.mplot3d import Axes3D #This is for 3d scatter plots.
-import math
-import random
-import functools
 from gmm import *
 
 X = np.load("data.npy")[:,:3]
