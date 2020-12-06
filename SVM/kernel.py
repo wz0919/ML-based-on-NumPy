@@ -7,6 +7,6 @@ def polynomial_kernel(X, X1, order, bias):
 def gaussian_kernel(X, X1, radius):
     squared_X = np.sum(X * X, axis=1)
     squared_X1 = np.sum(X1 * X1, axis=1)
-    gram = X.dot(X1.T)
+    gram = X.dot(X1.T).squeeze()
     K = np.exp(-(squared_X.reshape((1, -1)) + squared_X1.reshape((-1, 1)) - 2 * gram) / (2 * (radius ** 2)) )
-    return K
+    return K.squeeze()

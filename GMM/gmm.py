@@ -1,105 +1,27 @@
 import numpy as np
+from functions import *
 
-def initialise_parameters(X, K):
-    '''
-    split X into K groups
-    calulate the mean and variance of each group
-    as the initialized parameter
+class GaussianMixture():
+    def __init__(self, n_components=1, n_iter=100, n_init=1):
+        self.n_components = n_components
+        self.n_iter = n_iter
+        self.n_init = n_init
+        
+    def fit(self, X):
+        best_nll = np.inf
+        # run n_init times, choose paramters gives best nll
+        for i in range(self.n_init):
+            mu, sigma, pi = EM(X, self.n_components, self.n_iter)
+            labels, nll = classify(pi, mu, sigma, X, calculating_nll = True)
+            if nll < best_nll:
+                best_nll = nll
+                self.mu, self.sigma, self.pi = mu, sigma, pi
+                
+        return self
     
-    expect X to be 2d (N, m)
+    def predict(self, X):
+        labels, _ = classify(self.pi, self.mu, self.sigma, X)
+        return labels
     
-    return parameters
-    '''
-
-    N, m = X.shape
-    sigma = np.zeros((K, m, m))
-    mu = np.zeros((K, m))
-    pi = np.zeros(K)
-
-    indices = np.arange(N)
-    np.random.shuffle(indices)
-    # find the K groups
-    groups = np.array_split(X[indices,:m], K, axis=0)
-
-    for i in range(K):
-      g = groups[i]
-      mu[i] = g.mean(axis=0)
-      sigma[i] = (g - mu[i]).T@(g - mu[i])/(g.shape[0])
     
-    pi = np.ones(K)/K
 
-    return sigma, mu, pi
-
-def E_step(pi, mu, sigma, X):
-    '''
-    calculate the responsibility matrix, i.e. 
-    P(point i comes from j clusters| point i and i's Gaussian)
-    
-    return responsibility matrix
-    '''
-    N, m = X.shape
-    K = len(pi)
-    r = np.zeros((N, K))
-    
-    from scipy.stats import multivariate_normal
-    for i in range(K):
-      r[:,i] = multivariate_normal.pdf(X[:,],mu[i],sigma[i])
-    r = r * pi[None,:]
-    scale = r.sum(1)
-    r = r/scale[:,None]
-    return r
-
-def M_step(r, X):
-    '''
-    update the parameters by their MLE
-    
-    return parameters
-    '''
-    K = r.shape[1]
-    N, m = X.shape
-    mu = np.zeros((K, m))
-    sigma = np.zeros((K, m, m))
-    pi = np.zeros(K)
-    
-    x = X[:,:m]
-    sum_p = r.sum(0)
-    pi = sum_p/N
-    mu = r.T @ x/sum_p[:,None]
-    for i in range(K):
-      sigma[i] = (x - mu[i]).T@((x - mu[i])*r[:,i:(i+1)])/sum_p[i]
-    return mu, sigma, pi
-
-def classify(pi, mu, sigma, x):
-    '''
-    classify points by their responsibilities
-    
-    return assigned cluster's index
-    '''
-    K = len(pi)
-    m = 1 if x.ndim == 1 else x.shape[0]
-    prob = np.tile(np.zeros_like(pi), (m,1))
-    from scipy.stats import multivariate_normal
-    for i in range(K):
-      prob[:,i] = multivariate_normal.pdf(x,mu[i],sigma[i])*pi[i]
-    ind = prob.argmax(1)
-    return ind
-
-def EM(X, K, iterations):
-    '''
-    EM method for optimizing GMM
-    '''
-    N, m = X.shape
-    mu = np.zeros((K, m))
-    sigma = np.zeros((K, m, m))
-    pi = np.zeros(K)
-
-    pre_r = np.zeros((X.shape[0],K))
-    sigma, mu, pi = initialise_parameters(X, K)
-    for i in range(iterations):
-      r = E_step(pi, mu, sigma, X)
-      if np.linalg.norm(pre_r - r) < 1e-10:
-        break
-      mu, sigma, pi = M_step(r, X)
-      pre_r = r
-
-    return mu, sigma, pi
