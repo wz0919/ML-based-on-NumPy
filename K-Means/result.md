@@ -14,7 +14,7 @@ with k-means++
 
 ![Aaron Swartz](https://raw.githubusercontent.com/wz0919/ML-based-on-NumPy/main/K-Means/data/result_with_k-means%2B%2B.png)
 
-All results are global optimal.
+All results are global optimal.  In fact, with smaller max_iter kmeans++ will aslo has these result. 
 
 with randomly initialization:
 
