@@ -1,16 +1,11 @@
-Result when c = 10:
+Seperating points with polynomial kernel (degree 2, bias 1):
 
-![Aaron Swartz](https://raw.githubusercontent.com/wz0919/ML-based-on-NumPy/main/SVM/data/result_when_c%3D10.png)
-
-We can see the decision boundary seperates data very well and because c softens the margin, the circled support vectors are raletively farer from the boundary.
+![Aaron Swartz](https://raw.githubusercontent.com/wz0919/ML-based-on-NumPy/main/SVM/data/result_of_poly_kernel.png)
 
 —————————
 
-Result when c = 1e7:
+Seperating opints with rbf kernel (radius 0.5):
 
-![Aaron Swartz](https://raw.githubusercontent.com/wz0919/ML-based-on-NumPy/main/SVM/data/result_when_c%3D10000000.0.png)
+![Aaron Swartz](https://raw.githubusercontent.com/wz0919/ML-based-on-NumPy/main/SVM/data/result_of_rbf_kernel.png)
 
-When c is very big, this should almost like a hard margin SVM. In our data the positive samples and negative samples are very close so the dicision boundary
-should almost exactly seperate the data and the support vectors should be very close to the boundary.
-
-We can see the decision boundary seperates data very well and the circled support vectors are very closed to the boundary.
+More detailed.
