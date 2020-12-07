@@ -1,5 +1,3 @@
-Both elbow method and kmeans method are based on the approaches of finding new centroid in kmeans++
-
 elbow method result
 ---
 Run elbow method for 4 times, result:
@@ -10,10 +8,17 @@ Quite stable having elbow at k = 8
 
 kmeans result
 ---
-Run kmeans for 9 times, result:
+Run kmeans for 9 times with max_iter 10, result:
 
-![Aaron Swartz](https://raw.githubusercontent.com/wz0919/ML-based-on-NumPy/main/K-Means/data/clusters.png)
+with k-means++
 
-We can see kmeans++ are fairly likely to have better clusters
+![Aaron Swartz](https://raw.githubusercontent.com/wz0919/ML-based-on-NumPy/main/K-Means/data/result_with_k-means%2B%2B.png)
 
-In this example even in all the 9 times, the algorithm converged to the global optimal point
+All results are global optimal.
+
+with randomly initialization:
+
+![Aaron Swartz](https://raw.githubusercontent.com/wz0919/ML-based-on-NumPy/main/K-Means/data/result_with_random.png)
+
+Even if with max_iter 10, there're still some local optimal points.
+
